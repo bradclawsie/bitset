@@ -22,6 +22,7 @@ type BitSet struct {
 	bytes_arr []byte
 	// lock for access
 	mutex sync.RWMutex
+	size int
 }
 
 // Create a new BitSet that can accomodate n bits.
@@ -33,7 +34,13 @@ func NewBitSet(n uint32) *BitSet {
 		// round up so that the number of bytes can accomodate n bits
 		bs.bytes_arr = make([]byte,((n - 1) / WIDTH) + 1)
 	}
+	bs.size = len(bs.bytes_arr) * WIDTH
 	return bs
+}
+
+// return the size of the bitset
+func (bs *BitSet) Size() int {
+	return bs.size
 }
 
 // Create a viewable form of the BitSet
