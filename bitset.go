@@ -38,6 +38,11 @@ func NewBitSet(n uint32) *BitSet {
 	return bs
 }
 
+// Alias for NewBitSet
+func New(n uint32) *BitSet {
+	return NewBitSet(n)
+}
+
 // return the size of the bitset
 func (bs *BitSet) Size() int {
 	return bs.size
