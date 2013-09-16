@@ -1,3 +1,4 @@
+// BitSet implements getting and setting of true/false values within bytes.
 package bitset
 
 import (
@@ -25,7 +26,7 @@ type BitSet struct {
 	size int
 }
 
-// Create a new BitSet that can accomodate n bits.
+// NewBitSet will create a new BitSet that can accomodate n bits.
 func NewBitSet(n uint32) *BitSet {
 	bs := new(BitSet)
 	if n == 0 {
@@ -38,17 +39,17 @@ func NewBitSet(n uint32) *BitSet {
 	return bs
 }
 
-// Alias for NewBitSet
+// New is an alias for NewBitSet.
 func New(n uint32) *BitSet {
 	return NewBitSet(n)
 }
 
-// return the size of the bitset
+// Size returns the size of the BitSet.
 func (bs *BitSet) Size() int {
 	return bs.size
 }
 
-// Create a viewable form of the BitSet
+// DumpBitSet will return a string form of the BitSet
 func (bs *BitSet) DumpBitSet() string {
 	bs.mutex.RLock()
 	defer bs.mutex.RUnlock()
@@ -76,7 +77,7 @@ func (bs *BitSet) offsets(n int) (int,byte,error) {
 	return byte_offset,bit_offset,nil
 }
 
-// Set bit n to be 1. Error if n is not indexable in this BitSet.
+// SetBitN will set bit n to be 1. Error if n is not indexable in this BitSet.
 func (bs *BitSet) SetBitN(n int) error {
 	bs.mutex.Lock()
 	defer bs.mutex.Unlock()
@@ -88,7 +89,7 @@ func (bs *BitSet) SetBitN(n int) error {
 	return nil
 }
 
-// Set bit n to be 0. Error is n is not indexable in this BitSet.
+// UnsetBitN will set bit n to be 0. Error is n is not indexable in this BitSet.
 func (bs *BitSet) UnsetBitN(n int) error {
 	bs.mutex.Lock()
 	defer bs.mutex.Unlock()
@@ -100,7 +101,7 @@ func (bs *BitSet) UnsetBitN(n int) error {
 	return nil
 }
 
-// Read bit n as either true (1) or false (0). Error is n is not indexable in this BitSet.
+// GetBitN will read bit n as either true (1) or false (0). Error is n is not indexable in this BitSet.
 func (bs *BitSet) GetBitN(n int) (bool,error) {
 	bs.mutex.RLock()
 	defer bs.mutex.RUnlock()
