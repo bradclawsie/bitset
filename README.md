@@ -1,9 +1,11 @@
-bitset
-======
+[![License BSD](https://img.shields.io/badge/License-BSD-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
+[![Go Report Card](https://goreportcard.com/badge/github.com/bradclawsie/bitset)](https://goreportcard.com/report/github.com/bradclawsie/bitset)
+[![GoDoc](https://godoc.org/github.com/bradclawsie/httpshutdown?status.svg)](http://godoc.org/github.com/bradclawsie/bitset)
+[![Build Status](https://travis-ci.org/bradclawsie/bitset.png)](https://travis-ci.org/bradclawsie/bitset)
 
-## About
+## bitset
 
-This package attempts to implement a bitset in Go. By a bitset, I mean a structure that encodes
+This package implements a bitset in Go. By a bitset, I mean a structure that encodes
 true/false values as 1/0 inside bytes. Eight boolean values should be accomodated by one byte 
 using this structure.
 
@@ -17,24 +19,13 @@ functions.
 
 There are three main functions: 
 
-SetBitN(n) which sets the bit at position n to 1 (true)
+`SetBitN(n)` which sets the bit at position `n` to `1` (`true`)
 
-UnsetBitN(n) which sets the bit at position n to 0 (false)
+`UnsetBitN(n)` which sets the bit at position `n` to `0` (`false`)
 
-GetBitN(n) which gets the bit as position n and returns it as a bool (1 = true, 0 = false)
+`GetBitN(n)` which gets the bit as position `n` and returns it as a bool (`1` = `true`, `0` = `false`)
 
 For those wishing to visualize the layout of bits, a convenience function called DumpBitSet
 is provided.
 
-## Installing
-
-   $ go get github.com/bradclawsie/bitset
-
-## Docs
-
-   $ go doc github.com/bradclawsie/bitset
-
-## Examples
-
-The included unit test file contains examples of Setting, Unsetting and Getting bit values.
 
